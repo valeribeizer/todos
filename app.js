@@ -1,6 +1,6 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var  mongoose = require('mongoose');
+var express = require("express");
+var bodyParser = require("body-parser");
+var mongoose = require("mongoose");
 const _ = require("lodash");
 
 var app = express();
@@ -31,36 +31,7 @@ const tickets = new Item({ name: "Buy tickets" });
 const itemsArray = [tickets];
 
 app.get("/", function (req, res) {
-  Item.find(function (err, foundItems) {
-    if (foundItems.length === 0) {
-      Item.insertMany(itemsArray, function (err) {
-        if (err) {
-          console.log("Something went wrong!");
-        }
-      });
-      res.redirect("/");
-    } else {
-      res.render("index", { listTitle: "LIFE", newListItems: foundItems });
-    }
-  });
-});
-
-app.post("/", function (req, res) {
-  const itemName = req.body.newTodo;
-  const listName = req.body.list;
-
-  const newItem = new Item({ name: itemName });
-
-  if (listName === "LIFE") {
-    newItem.save();
-    res.redirect("/");
-  } else {
-    List.findOne({ name: listName }, function (err, foundList) {
-      foundList.items.push(newItem);
-      foundList.save();
-      res.redirect("/" + listName);
-    });
-  }
+  res.render("home");
 });
 
 app.get("/:newRoute", function (req, res) {
@@ -84,33 +55,34 @@ app.get("/:newRoute", function (req, res) {
   });
 });
 
+app.post("/", function (req, res) {
+  const itemName = req.body.newTodo;
+  const listName = req.body.list;
+
+  const newItem = new Item({ name: itemName });
+
+  List.findOne({ name: listName }, function (err, foundList) {
+    foundList.items.push(newItem);
+    foundList.save();
+    res.redirect("/" + listName);
+  });
+});
+
 app.post("/delete", function (req, res) {
   const checkedItemId = req.body.checkbox;
   const listName = req.body.listName;
 
-  if (listName === "LIFE") {
-    Item.findByIdAndRemove(checkedItemId, function (err) {
-      if (err) {
-        console.log("Something went south!");
-      } else {
-        console.log("Mission is completed!");
-        res.redirect("/");
+  List.findOneAndUpdate(
+    { name: listName },
+    { $pull: { items: { _id: checkedItemId } } },
+    function (err, foundList) {
+      if (!err) {
+        res.redirect("/" + listName);
       }
-    });
-  } else {
-    List.findOneAndUpdate(
-      { name: listName },
-      { $pull: { items: { _id: checkedItemId } } },
-      function (err, foundList) {
-        if (!err) {
-          res.redirect("/" + listName);
-        }
-      }
-    );
-  }
+    }
+  );
 });
 
-
-app.listen(3000, function() {
-    console.log('Server is running');
+app.listen(3000, function () {
+  console.log("Server is running");
 });
