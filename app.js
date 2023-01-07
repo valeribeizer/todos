@@ -14,6 +14,11 @@ mongoose.connect(
   "mongodb+srv://valeryiabeizer:pCV32dYi94mAS@cluster0.y2ttp.mongodb.net/todolistDB"
 );
 
+let port = process.env.PORT;
+if (port == null || port == "") {
+  port = 3000;
+}
+
 const itemsSchema = {
   name: String,
 };
@@ -83,6 +88,6 @@ app.post("/delete", function (req, res) {
   );
 });
 
-app.listen(3000, function () {
+app.listen(port, function () {
   console.log("Server is running");
 });
