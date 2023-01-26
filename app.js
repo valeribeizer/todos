@@ -6,6 +6,7 @@ var passportLocalMongoose = require("passport-local-mongoose");
 var bodyParser = require("body-parser");
 var mongoose = require("mongoose");
 const _ = require("lodash");
+require("dotenv").config();
 
 var app = express();
 
@@ -25,11 +26,8 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 mongoose.set("strictQuery", false);
-mongoose.connect(
-  "mongodb+srv://valeryiabeizer:pCV32dYi94mAS@cluster0.y2ttp.mongodb.net/todoDB"
-);
+mongoose.connect(process.env.MONGODB_URI);
 
 let port = process.env.PORT;
 if (port == null || port == "") {
