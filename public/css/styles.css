@@ -1,11 +1,10 @@
 body {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
+  background-color: #ffffff;
+  background-image: url("https://www.transparenttextures.com/patterns/mirrored-squares.png");
 }
 
-li {
-  padding: 2%;
-}
-
+/************NAVBAR***************/
 .navbar {
   padding-top: 15px;
   padding-bottom: 15px;
@@ -33,46 +32,32 @@ a:hover {
   color: #a0a2d2;
 }
 
-.footer-padding {
-  padding-bottom: 60px;
+li {
+  padding: 2%;
 }
 
-.footer {
-  position: fixed;
-  text-align: center;
-  bottom: 0;
+/************HOME***************/
+img {
   width: 100%;
-  height: 60px;
-  background-color: #c0deff;
-}
-
-.footer p {
-  margin-top: 5px;
-  font-size: 12px;
-  color: #7f8487;
-}
-
-h1 {
-  color: #fff;
-  padding: 10px;
-  font-weight: 150;
-  font-size: 30px;
+  margin: auto;
+  padding-top: 5%;
+  display: block;
 }
 
 .home-page {
-  padding: 0 10% 10% 10%;
+  padding: 10% !important;
 }
 
-.box {
-  max-width: 400px;
-  margin: 50px auto;
-  background: white;
-  border-radius: 5px;
-  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+.title {
+  color: #7f8487;
+  text-align: center;
+  font-weight: 150;
+  font-size: 50px;
 }
 
 .btn {
   border-radius: 40px;
+  font-size: 35px;
 }
 
 .btn-outline-info {
@@ -87,20 +72,55 @@ h1 {
 }
 
 .btn-dark {
-    color: #fff;
-    background-color: #816caa;
-    border-color: #816caa;
+  color: #fff;
+  background-color: #816caa;
+  border-color: #816caa;
 }
 
 .btn-dark:hover {
-    background-color: #51358a;
-    border-color: #51358a;
+  background-color: #51358a;
+  border-color: #51358a;
 }
 
+/************REG_LOG***************/
+.reg-log {
+  color: #816caa;
+  padding-left: 0;
+  font-size: 40px;
+  font-weight: 150;
+}
+
+.reg-log-sub {
+  font-size: 20px;
+  font-weight: 150;
+}
+
+.row-reg-log {
+  padding-top: 5%;
+}
+
+.lb-reg-log {
+  font-size: 30px;
+  font-weight: 100;
+}
+
+/************TODO***************/
 #heading {
   background-color: #a8d1d1;
   border-radius: 5px;
   text-align: center;
+  color: #fff;
+  font-weight: 150;
+  font-size: 30px;
+  margin-top: 20%;
+}
+
+.box {
+  max-width: 60%;
+  margin: 5% auto;
+  background: white;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
 
 .item {
@@ -108,6 +128,24 @@ h1 {
   display: flex;
   align-items: center;
   border-bottom: 1px solid #f1f1f1;
+}
+
+.new-item {
+  min-height: 70px;
+  border-bottom: 1px solid #f1f1f1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.plus {
+  min-height: 50px;
+  width: 50px;
+  background-color: transparent;
+  color: #a8d1d1;
+  font-size: 30px;
+  border: none;
+  padding-right: 15%;
+  padding-bottom: 3%;
 }
 
 .item:last-child {
@@ -136,18 +174,6 @@ form.item {
   margin-left: 20px;
 }
 
-.plus {
-  min-height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  border-color: transparent;
-  background-color: #a8d1d1;
-  color: #fff;
-  font-size: 30px;
-  padding-bottom: 6px;
-  border-width: 0;
-}
-
 input[type="text"] {
   text-align: center;
   height: 60px;
@@ -169,40 +195,67 @@ input[type="text"]:focus {
   opacity: 1;
 }
 
-img {
-  width: 100%;
-  margin: auto;
-  padding-top: 5%;
-  display: block;
+/************FOOTER***************/
+.footer-padding {
+  padding-bottom: 60px;
 }
 
-.title {
-  color: #7f8487;
+.footer {
+  position: fixed;
   text-align: center;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background-color: #c0deff;
 }
 
-.back-leaf {
-  height: 700px;
-  overflow-y: scroll;
-  background-image: url("leaf.png");
-  background-size: 300px 500px;
-  background-repeat: no-repeat;
-  background-position: left;
+.footer p {
+  margin-top: 5px;
+  font-size: 12px;
+  color: #4e6f82;
 }
 
-@media (max-width: 1028px) {
+@media (min-width: 768px) {
+  .home-page {
+    padding: 5% 10% 10% 10%;
+  }
+}
+
+@media (min-width: 992px) {
+  .home-page {
+    padding: 0 10%;
+  }
+
   .title {
+    color: #7f8487;
     text-align: center;
+    font-weight: 150;
+    font-size: 30px;
   }
 
-  img {
-    width: 70%;
+  .btn {
+    border-radius: 40px;
+    font-size: 20px;
   }
 
-  .back-leaf {
-    padding-top: 15%;
-    background-size: 500px 700px;
-    background-position-x: left;
-    background-position-y: bottom;
+  /************REG_LOG***************/
+  .reg-log {
+    font-size: 30px;
+  }
+
+  .reg-log-sub {
+    font-size: 15px;
+  }
+
+  .row-reg-log {
+    padding-top: 3%;
+  }
+
+  .lb-reg-log {
+    font-size: 20px;
+  }
+
+  .box {
+    max-width: 40%;
   }
 }
